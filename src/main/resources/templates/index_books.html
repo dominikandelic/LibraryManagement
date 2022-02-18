@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Index - Library Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Welcome [[${#httpServletRequest.remoteUser}]]</h1>
+            <a th:href="@{/books/add}">Add books</a> <a th:href="@{/books/remove}">Remove books</a>
+            <h3>Collection of our available books</h3>
+            <table class="table" border="1">
+                <tr>
+                    <td>Name</td>
+                    <td>Author</td>
+                    <td>Genre</td>
+                    <td>Year</td>
+                </tr>
+                <tr th:each="book : ${bookList}">
+                    <td th:text="${book.name}">Name</td>
+                    <td th:text="${book.author}">Author</td>
+                    <td th:text="${book.genre}">Genre</td>
+                    <td th:text="${book.year}">Year</td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
